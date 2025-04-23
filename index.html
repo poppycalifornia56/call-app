@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Can I Call You Today?</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <!-- <form
+    id="emailForm"
+    class="hidden"
+    action="https://formsubmit.co/johannnhandoko@gmail.com"
+    method="POST"
+  >
+    <input
+      type="hidden"
+      name="_subject"
+      id="emailSubject"
+      value="New response from Call App"
+    />
+    <input type="hidden" name="response" id="emailResponse" value="" />
+    <input type="hidden" name="_template" value="table" />
+  </form> -->
+  <body>
+    <div class="app-container">
+      <div class="phone-icon">
+        <img src="images/phone.png" alt="Phone" />
+      </div>
+
+      <h1 class="question">Can I call you today?</h1>
+
+      <div class="buttons">
+        <button id="yesBtn" class="btn yes-btn">Yes, please!</button>
+        <button id="noBtn" class="btn no-btn">Maybe later</button>
+      </div>
+
+      <div class="result-container hidden">
+        <div id="animationContainer" class="animation-container"></div>
+        <p id="resultMessage" class="result-message"></p>
+        <button id="resetBtn" class="btn reset-btn">Ask again</button>
+      </div>
+    </div>
+
+    <audio id="happySound" preload="auto">
+      <source src="sounds/happy.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="sadSound" preload="auto">
+      <source src="sounds/sad.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
