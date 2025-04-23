@@ -1,7 +1,4 @@
-const emailForm = document.getElementById("emailForm");
-const emailResponse = document.getElementById("emailResponse");
-const emailSubject = document.getElementById("emailSubject");
-
+const bgMusic = document.getElementById("bgMusic");
 const happySound = document.getElementById("happySound");
 const sadSound = document.getElementById("sadSound");
 
@@ -14,40 +11,44 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultContainer = document.querySelector(".result-container");
   const animationContainer = document.getElementById("animationContainer");
   const resultMessage = document.getElementById("resultMessage");
+  document.body.addEventListener(
+    "click",
+    function initAudio() {
+      bgMusic.volume = 0.5;
+      bgMusic.play().catch((e) => console.log("Audio play prevented:", e));
+
+      document.body.removeEventListener("click", initAudio);
+    },
+    { once: true }
+  );
   const happySound = document.getElementById("happySound");
   const sadSound = document.getElementById("sadSound");
   const phoneIcon = document.querySelector(".phone-icon");
 
   yesBtn.addEventListener("click", function () {
-    /* emailResponse.value = "Yes";
-    emailSubject.value = "✅ User wants to be called!";
-
-    emailForm.submit(); */
     playHappySound();
     showHappyResult();
   });
 
   noBtn.addEventListener("click", function () {
-   /*  emailResponse.value = "No";
-    emailSubject.value = "❌ User doesn't want to be called";
-
-    emailForm.submit(); */
     playSadSound();
     showSadResult();
   });
   resetBtn.addEventListener("click", resetApp);
 
   function playHappySound() {
-    happySound.currentTime = 0; 
+    happySound.currentTime = 0;
     happySound.play().catch((e) => console.log("Audio play failed:", e));
   }
 
   function playSadSound() {
-    sadSound.currentTime = 0; 
+    sadSound.currentTime = 0;
     sadSound.play().catch((e) => console.log("Audio play failed:", e));
   }
   function showHappyResult() {
     happySound.play();
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
 
     buttonsContainer.classList.add("hidden");
     questionElement.classList.add("hidden");
@@ -66,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showSadResult() {
     sadSound.play();
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
 
     buttonsContainer.classList.add("hidden");
     questionElement.classList.add("hidden");
@@ -85,6 +88,8 @@ document.addEventListener("DOMContentLoaded", function () {
     happySound.currentTime = 0;
     sadSound.pause();
     sadSound.currentTime = 0;
+
+    bgMusic.play().catch((e) => console.log("Audio play failed:", e));
 
     buttonsContainer.classList.remove("hidden");
     questionElement.classList.remove("hidden");
